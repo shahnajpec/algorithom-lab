@@ -6,6 +6,23 @@ int adj[100][100];
 
 int edges,nodes;
 
+int visited[100];
+
+void dfs(int x)
+{
+    visited [x]=1;
+    cout<<x<<"->";
+
+    for(int i=0;i<nodes;i++)
+    {
+        if(adj [x][i]==1 && visited[i]==0)
+        {
+            dfs(i);
+        }
+    }
+}
+
+
 
 int main()
 {
@@ -60,20 +77,14 @@ int main()
         }
         cout<<endl;
    }
-   int node1,node2;
+   //dfs traversal
+   int x;
+   cout<<"enter the source node for dfs"<<endl;
+   cin>>x;
 
-   cout<<"enter two nodes to see connection"<<endl;
-   cin>>node1>>node2;
+   cout<<"the dfs traversal: "<<endl;
+   dfs(x);
 
-   if(adj[node1][node2] == 1)
-   {
-       cout<<node1<<"and"<<node2<<"are connected"<<endl;
-
-   }
-   else
-    {
-    cout<<"not connected"<<endl;
-    }
     return 0;
 }
 
